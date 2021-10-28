@@ -1,0 +1,551 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif; /* This was the link that was copied from the google fonts page, you need a link for the css which is this one and a link which ive added into the html file*/
+}
+
+.header{
+    min-height:100vh;
+    width:100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/banner.png); /* Very important, this is how we add the background image, without this line the image wont show*/
+    background-position:center;
+    background-size:cover;
+    position:relative;
+}
+
+nav{
+    display:flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items:center;
+}
+
+nav img{
+    width: 150px;
+}
+
+.nav-links{
+    flex:1;
+    text-align:right;
+}
+
+.nav-links ul li{
+    list-style:none; /* Removes the bullets */
+    display:inline-block; /* Makes them line up side to side */
+    padding: 8px 12px;
+    position:relative;
+}
+
+.nav-links ul li a{
+    color:#fff;
+    text-decoration:none; /*Removes the underline from under the words */
+    font-size:13px;
+}
+
+.nav-links ul li::after{ /*This adds a underline to the buttons on the nav bar */
+    content:'';
+    width:0%; /*Since width is 0 you wont be able to see it, but if you make it a 100% you will. Our goal isnt to make it visible while just viewing the page, we only want it to underline after we hover over it, check the next code under */
+    height: 2px;
+    background: #f44336; /*The underline will be red in colour */
+    display:block; /*If you dont set display to a value, the underline wont be visible. so you dont have to set it to block but you do have to set it to a value */
+    margin:auto;
+    transition:0.5s; /*Adds a cool effect, so when you hover over the text it wont just highlight immediately, it takes 0.5 sec for it to fully underline */
+}
+
+.nav-links ul li:hover::after{ 
+    width:100%; /*Now only if you hover over will the width be 100% otherwise it will be 0 which isnt visible */
+}
+
+.text-box{
+    width:90%;
+    color:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%); /*Apparently this positions it correctly */
+    text-align:center;
+}
+
+.text-box h1{
+    font-size:62px;
+}
+
+.text-box p{
+    margin: 10px 0 40px;
+    font-size:14px;
+    color:white;
+}
+
+.hero-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size:13px;
+    background: transparent;
+    position:relative;
+    cursor:pointer;
+}
+
+.hero-btn:hover{
+    border: 1px solid #f44336;
+    background:#f44336;
+    transition:1s;
+}
+
+/* This hides the close and option button that we added, from being displayed. Now in the media query below we allow for it to only be shown while the screen is small and not on the big screen */
+nav .fa{
+    display:none;
+}
+
+@media(max-width: 700px){
+    .text-box h1{
+        font-size:20px;
+    }
+
+    .nav-links ul li{
+        display:block;
+    }
+
+    .nav-links{
+        position:fixed; /*This was set as absolute, but when you minimize the screen and scroll left, the nav links pops up which isnt right, so setting it to fixed, solves this*/
+        background:#f44336;
+        height:100vh;
+        width:200px;
+        top:0;
+        right:-200px;
+        text-align:left;
+        z-index:2; /* This allows for this part of the menu to be ontop of the background, if this isnt added youll see the text-box writing overflow on this menu.*/
+        transition:1s;
+    }
+
+    /* Here we display the close and option button in small screen (in the media query) */
+    nav .fa{
+        display:block;
+        color:white;
+        margin:10px;
+        font-size:22px;
+        cursor:pointer;
+    }
+
+    .nav-links ul{
+        padding:30px;
+    }
+}
+
+/* -----------Course------------- */
+
+.course{
+    width:80%;
+    margin:auto;
+    text-align:center;
+    padding-top:100px;
+}
+
+h1{
+    font-size:36px;
+    font-weight:600;
+}
+
+p{
+    color:#777;
+    font-size:14px;
+    font-weight:300;
+    line-height:22px;
+    padding:10px;
+}
+
+.row{
+   margin:5%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.course-col{
+    flex-basis:31%;                 /* Basically makes the texts flex so instead of the text being long on each line, it makes them bend and fit better */
+    background:#fff3f3;
+    border-radius:10px;            /* Makes like a box border around it */
+    margin-bottom:5%;
+    padding: 20px 12px;
+    box-sizing:border-box;        /* Before you add this, the box borders for all 3 are attatched, this spaces them out and makes it look better*/
+    transition: 0.5s;
+}
+
+h3{
+    text-align:center;
+    font-weight:600;
+    margin:10px;
+}
+
+.course-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2); /*When you hover over it, it makes a shadow */
+}
+
+/* You dont have to make another media query like this as we already made one above, but i made it again just as the guy in the vid did, but you dont have to, you can put all of this code below in the other media 700 above and it will work */
+@media(max-width: 700px){
+    .row{
+        flex-direction:column;  /*This helps with positioning the content in a column format so that it fits better on screen and looks neater. Potentially use this code for the personal website. */
+    }
+}
+
+/* -----------Campus------------- */
+
+.campus{
+    width:80%;
+    margin:auto;
+    text-align:center;
+    padding-top:50px;
+}
+
+.campus-col{
+    flex-basis: 32%;
+    border-radius:10px;
+    margin-bottom:30px;
+    position:relative;
+    overflow:hidden; /* Without a flex basis, this wont work. Basically flex basis makes it flex to 32% and setting this overflow to hidden, basically cuts the rest of the image (the overflow) over 32% out, thus halfing the picture */
+}
+
+.campus-col img{
+    width:100%;
+    display:block; /* Makes the corners/edges round instead of sharp
+    */
+}
+
+.layer{
+    background:transparent;
+    height: 100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    transition:0.5s;
+}
+
+.layer:hover{
+    background:rgba(226,0,0,0.7);
+}
+
+.layer h3{
+    width:100%;
+    font-weight:500; /* Makes the font much much lighter and look better*/
+    color:white;
+    font-size:26px;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    position:absolute;
+    opacity:0; /* Hides the names of the cities when just viewing */
+    transition:0.5s;
+}
+
+.layer:hover h3{
+    bottom:49%;
+    opacity:1; /* Shows the names of the cities when just hovering */
+}
+
+/* -----------Facilities------------- */
+.facilities{
+    width:80%;
+    margin:auto;
+    text-align:center;
+    padding-top: 100px;
+}
+
+.facilities-col{
+    flex-basis:31%;
+    border-radius:10px;
+    margin-bottom:5px;
+    text-align:left;
+}
+
+.facilities-col img{
+    width:100%;
+    border-radius:10px;
+}
+
+.facilities-col p{
+    padding:0;
+}
+
+.facilities-col h3{
+    margin-top: 16px;
+    margin-bottom:15px;
+    text-align:left;
+}
+
+/* -----------Testimonials------------- */
+.testimonials{
+    width:80%;
+    margin:auto;
+    padding-top:100px;
+    text-align: center;
+}
+
+.testimonial-col{
+    flex-basis:44%;
+    border-radius:10px;
+    margin-bottom:5%;
+    text-align:left;
+    background:#fff3f3;
+    padding:25px;
+    cursor:pointer;
+    display:flex;
+}
+
+.testimonial-col img{
+    height:40px;
+    margin-left:5px;
+    margin-right:30px;
+    border-radius:50%;
+}
+
+.testimonial-col p{
+    padding:0;
+}
+
+.testimonial-col h3{
+    margin-top:15px;
+    text-align: left;
+    margin-left:0; /* I added this */
+}
+
+.testimonial-col .fa{
+    color:#f44336;
+}
+
+@media(max-width:700px){ /* As i mentioned before, all media queries can be written in one media query but im doing it seperate just to indicated better*/
+    .testimonial-col img{
+        margin-left:0px;
+        margin-right:15px;
+    }
+}
+
+/* -----------Call to Action------------- */
+.cta{
+    margin:100px auto;
+    width:80%;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(images/banner2.jpg);
+    background-position: center;
+    background-size:cover;
+    border-radius:10px;
+    text-align:center;
+    padding: 100px 0;
+}
+
+.cta h1{
+    color:white;
+    margin-bottom:40px;
+    padding:0;
+}
+
+@media(max-width: 700px){ /* Again you can do all of this in just one media query but i seperated it as i explained, to understand better */
+    .cta h1{
+        font-size:24px;
+    }
+}
+
+/* -----------Call to Action------------- */
+.footer{
+    width:100%;
+    text-align:center;
+    padding: 30px 0;
+}
+
+.footer h4{
+    margin-bottom:25px;
+    margin-top:20px;
+    font-weight:600;
+}
+
+.icons .fa{
+    color:#f44336;
+    margin: 0 13px;
+    cursor:pointer;
+    padding: 18px 0;
+}
+
+.fa-heart-o{
+    color:#f44336;
+}
+
+
+/* -----------About Us Page------------- */
+.sub-header{
+    height:50vh;
+    width:100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/background.jpg);
+    background-position:center;
+    background-size:cover;
+    text-align:center;
+    color:white;
+}
+
+.sub-header h1{
+    margin-top:100px;
+}
+
+.about-us{
+    width:80%;
+    margin:auto;
+    padding-top:80px;
+    padding-bottom:50px;
+}
+
+.about-col{
+    flex-basis:48%;
+    padding: 30px 2px;
+}
+
+.about-col img{
+    width:100%;
+}
+
+.about-col h1{
+    padding-top:0;
+}
+
+.about-col p{
+    padding: 15px 0 25px;
+}
+
+.red-btn{
+    border:1px solid #f44336;
+    background:transparent;
+    color:#f44336;
+}
+
+.red-btn:hover{
+    color:white;
+}
+
+/* -----------Blog Content------------- */
+.blog-content{
+    width:80%;
+    margin:auto;
+    padding:60px 0;
+}
+
+.blog-left{
+    flex-basis:65%;
+}
+
+.blog-left img{
+    width:100%;
+}
+
+.blog-left h2{
+    color: #222;
+    font-weight:600;
+    margin:30px 0;
+}
+
+.blog-left p{
+    color:#999;
+    padding:0;
+}
+
+.blog-right{
+    flex-basis:32%;
+}
+
+.blog-right h3{
+    background: #f44336;
+    color:#fff;
+    padding: 7px 0;
+    font-size: 16px;
+    margin-bottom:20px;
+}
+
+.blog-right div{
+    display:flex;
+    align-items:center;
+    justify-content:space-between; /* Makes a big space between the courses and the number of credits needed for that course */
+    color:#555;
+    padding:8px;
+    box-sizing:border-box;
+}
+
+.comment-box{
+    border:1px solid #ccc;
+    margin:50px 0;
+    padding:10px 20px;
+}
+
+.comment-box h3{
+    text-align:left;
+}
+
+.comment-form input, .comment-form textarea{
+    width:100%;
+    padding:10px;
+    margin:15px 0;
+    box-sizing:border-box; /* If you dont add this, the lines of the input and textarea overflow over the border*/
+    border:none;
+    outline:none;
+    background:#f0f0f0;
+}
+
+.comment-form button{
+    margin: 10px 0;
+}
+
+@media(max-width:700px){
+    .sub-header h1{
+        font-size:24px;
+    }
+}
+
+/* -----------Contact us page------------- */
+.location{
+    width:80%;
+    margin:auto;
+    padding: 80px 0;
+}
+
+.location iframe{
+    width:100%;
+}
+
+.contact-us{
+    width:80%;
+    margin:auto;
+}
+
+.contact-col{
+    flex-basis:48%;
+    margin-bottom:30px;
+}
+
+.contact-col div{
+    display:flex;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.contact-col div .fa{
+    font-size:28px;
+    color:#f44336;
+    margin: 10px;
+    margin-right:30px;
+}
+
+.contact-col div p{
+    padding:0;
+}
+
+.contact-col div h5{
+    font-size:20px;
+    margin-bottom:5px;
+    color:#555;
+    font-weight:400;
+}
+
+.contact-col input, .contact-col textarea{
+    width:100%;
+    padding:15px;
+    margin-bottom:17px;
+    outline:none;
+    border: 1px solid #ccc;
+    box-sizing:border-box;
+}
